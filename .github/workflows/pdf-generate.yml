@@ -1,20 +1,23 @@
-name: 生成PDF报告
+
+name: 生成带图片/代码的PDF报告
 on:
   push:
     paths:
-      - "test report.md"  # 仅当该文件更新时触发
+      - "test report.md"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  # 拉取仓库代码
-      - name: 安装pandoc并转换为PDF
+      - uses: actions/checkout@v4
+      - name: 生成带图片和代码高亮的PDF
         uses: docker://pandoc/latex:latest
         with:
-          args: pandoc "test report.md" -o "test report.pdf" --pdf-engine=xelatex  # 转换命令
-      - name: 上传PDF作为 artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-report-pdf
-          path: "test report.pdf"
-
+          args: >-
+            pandoc "test report.md" 
+            -o "test report.pdf" 
+            --pdf-engine=xelatex 
+            --verbose 
+            --highlight-style=tango 
+            --resource-path=.:./images  # 假设图片存放在仓库的images文件夹中，需根据实际路径调整
+            -V mainfont="Noto Sans CJK SC"  # 中文支持字体，需确保镜像内置（pandoc/latex已包含）
+            -V monofont="Noto Sans Mono CJK SC"  # 代码块等 monospace 字体
