@@ -1,0 +1,27 @@
+import numpy as np
+import time
+def random_walk_numpy(L=512, N=100000, T=1000):
+    x=np.random.randint(0,L,N)
+    y=np.random.randint(0,L,N)
+    center_start=L//4
+    center_end=3*L//4
+    center_count=0
+    start_time=time.time()
+    directions=np.random.randint(0,4,(T,N))
+    for step in range(T):
+        dirs=directions[step]
+        mask_up=(dirs==0)
+        mask_down=(dirs==1)
+        mask_left=(dirs==2)
+        mask_right=(dirs==3)
+        y[mask_up]=(y[mask_up]-1)%L
+        y[mask_down]=(y[mask_down]+1)%L
+        x[mask_left]=(x[mask_left]-1)%L
+        x[mask_right]=(x[mask_right]+1)%L
+        in_center=(x>=center_start)&(x<center_end)&(y>=center_start)&(y<center_end)
+        center_count+=np.sum(in_center)
+    total_time=time.time()-start_time
+    avg_center_ratio=center_count/(N*T)
+    return avg_center_ratio, total_time
+ratio,t=random_walk_numpy(N=10000,T=100)
+print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.3f}秒")
