@@ -1,0 +1,20 @@
+name: 生成PDF报告
+on:
+  push:
+    paths:
+      - "test report.md"  # 仅当该文件更新时触发
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # 拉取仓库代码
+      - name: 安装pandoc并转换为PDF
+        uses: docker://pandoc/latex:latest
+        with:
+          args: pandoc "test report.md" -o "test report.pdf" --pdf-engine=xelatex  # 转换命令
+      - name: 上传PDF作为 artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report-pdf
+          path: "test report.pdf"
+
