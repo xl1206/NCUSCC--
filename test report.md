@@ -45,7 +45,7 @@ def random_walk_pure_python(L=512,N=100000,T=1000):
 ratio,t=random_walk_pure_python(N=100000,T=1000)
 print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.2f}秒")
 ```
-<img width="3072" height="1920" alt="屏幕截图 2025-10-21 092620" src="https://github.com/user-attachments/assets/1b14b94f-4249-4d84-b7d0-6d02e12636c4" />
+<img width="3072" height="1920" alt="5e5f90f4e1dcf37173ed99b8d9ee6272" src="https://github.com/user-attachments/assets/39bdd447-7286-4dd1-a7bd-a6bbdecce5db" />
 
 这是最终运行结果，耗费时长足足有半分钟，这是非常慢的。接下来就是用其他方法进行优化。
 ## 4引入numpy库进行优化
@@ -79,4 +79,5 @@ def random_walk_numpy(L=512, N=100000, T=1000):
 ratio,t=random_walk_numpy(N=10000,T=100)
 print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.3f}秒")
 ```
-
+<img width="3072" height="1920" alt="9a3ba5d56196816840c2281df0833c78" src="https://github.com/user-attachments/assets/16439a5b-2663-47fc-9b7b-07e3a3444427" />
+这是优化后的结果，仅耗时0.03秒，这让我体会到了计算优化的重要性，竟然让运算耗时缩短这么多。我知道肯定会有更多手段让时间进一步缩短，但对我来说已经到极限了，没时间了。
