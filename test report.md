@@ -46,6 +46,7 @@ ratio,t=random_walk_pure_python(N=100000,T=1000)
 print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.2f}秒")
 ```
 <img width="3072" height="1920" alt="屏幕截图 2025-10-21 092620" src="https://github.com/user-attachments/assets/1b14b94f-4249-4d84-b7d0-6d02e12636c4" />
+
 这是最终运行结果，耗费时长足足有半分钟，这是非常慢的。接下来就是用其他方法进行优化。
 ## 4引入numpy库进行优化
 引入numpy库可以进行向量化计算，避免了一些繁琐的步骤。我一开始选择引入库计算是因为我没有学习别的编程语言，其实我也没学过numpy库的用法，边学边做并在ai的帮助下终于完成了numpy库优化。以下是代码展示
