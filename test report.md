@@ -81,3 +81,8 @@ print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.3f}秒")
 ```
 <img width="3072" height="1920" alt="9a3ba5d56196816840c2281df0833c78" src="https://github.com/user-attachments/assets/16439a5b-2663-47fc-9b7b-07e3a3444427" />
 这是优化后的结果，仅耗时0.03秒，这让我体会到了计算优化的重要性，竟然让运算耗时缩短这么多。我知道肯定会有更多手段让时间进一步缩短，但对我来说已经到极限了，没时间了。
+
+## 5可视化尝试
+<img width="2552" height="2100" alt="1ac96f09f932f9a87cb95c3911f3a8d5" src="https://github.com/user-attachments/assets/ef343170-52cc-4eb1-895a-e53a08fac7bc" />
+引入了Matplotlib库生成了这样一张基础可视化散点图，不过更高级的我就不会了。
+### 总结
