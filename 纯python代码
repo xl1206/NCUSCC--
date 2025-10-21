@@ -1,0 +1,28 @@
+import random
+import time
+def random_walk_pure_python(L=512,N=100000,T=1000):
+    particles=[(random.randint(0, L-1), random.randint(0, L-1)) for _ in range(N)]
+    center_start=L//4
+    center_end=3*L//4
+    center_count=0
+    start_time = time.time()
+    for step in range(T):
+        for i in range(N):
+            x, y=particles[i]
+            direction = random.randint(0, 3)
+            if direction==0:
+                y=(y-1)%L
+            elif direction==1:
+                y=(y+1)%L
+            elif direction==2:
+                x=(x-1)%L
+            else:
+                x=(x+1)%L
+            particles[i]=(x,y)
+            if center_start<=x<center_end and center_start<=y<center_end:
+                center_count+=1
+    total_time=time.time()-start_time
+    avg_center_ratio=center_count/(N*T)
+    return avg_center_ratio,total_time
+ratio,t=random_walk_pure_python(N=100000,T=1000)
+print(f"中心区域平均停留比例:{ratio:.6f},时间:{t:.2f}秒")
